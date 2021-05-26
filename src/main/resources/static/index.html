@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator walut</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="mainBackground">
+    <h1>Kantor wymiany walut</h1>
+</div>
+<div ng-controller="ExchangeController as exchange">
+
+    <h2>Kalkulator</h2>
+    <label class="title" for="eurValue">Wartość w EUR do przeliczenia</label><br/>
+    <input type="number" ng-model="exchange.exchangeValues.eurValue" id = "eurValue" min="0.01" step="0.01" oninput="this.value =
+ !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><br/>
+    <p class="title">Waluta</p>
+    <label ng-repeat="n in exchange.exchangeRates">
+        <input type="radio" name="n.rate" ng-model="exchange.exchangeValues.currency" ng-value="n.currency" >{{n.currency}} = {{n.rate}}<br/>
+    </label>
+    <h3 class="title" ng-if="exchange.result">Wynik:</h3>
+    <p id="result" ng-if="exchange.result"><b>{{exchange.values.eurValue}}</b> EUR to <b>{{exchange.values.resultValue}}</b> {{exchange.values.currency}}</p>
+    <p id="error" ng-if="exchange.msg">{{exchange.msg}}</p>
+    <button ng-click="exchange.calculate()">Przelicz</button>
+</div>
+
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+</body>
+</html>
