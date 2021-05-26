@@ -28,6 +28,8 @@ public class ExchangeController {
     public ResponseEntity<ExchangeValues> calculator(@RequestBody ExchangeValues exchangeValues){
         if(exchangeValues.getEurValue() == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Należy wpisać kwotę do przeliczenia");
+        if(exchangeValues.getCurrency() == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Należy wybrać docelową walutę");
         return ResponseEntity.ok(exchangeService.calculate(exchangeValues));
     }
 }

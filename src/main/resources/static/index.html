@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
-<head>
+<head >
     <meta charset="UTF-8">
     <title>Kalkulator walut</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<div id="mainBackground">
-    <h1>Kantor wymiany walut</h1>
-</div>
-<div ng-controller="ExchangeController as exchange">
-
-    <h2>Kalkulator</h2>
+<body id="background">
+    <h1>Kalkulator walut</h1>
+<div id="main" ng-controller="ExchangeController as exchange">
     <label class="title" for="eurValue">Wartość w EUR do przeliczenia</label><br/>
     <input type="number" ng-model="exchange.exchangeValues.eurValue" id = "eurValue" min="0.01" step="0.01" oninput="this.value =
  !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><br/>
@@ -24,6 +20,7 @@
     <p id="error" ng-if="exchange.msg">{{exchange.msg}}</p>
     <button ng-click="exchange.calculate()">Przelicz</button>
 </div>
+    <footer>Atos Recruitment Task - Mateusz Polowiec</footer>
 
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>

@@ -19,7 +19,8 @@ class ExchangeServiceTest {
         ExchangeValues exchangeValues = new ExchangeValues();
         exchangeValues.setEurValue(new BigDecimal(100));
         exchangeValues.setCurrency("PLN");
-        Assert.isTrue((exchangeService.calculate(exchangeValues)).getResultValue().equals(BigDecimal.valueOf(448.39)));
+        Assert.isTrue((exchangeService.calculate(exchangeValues)).getResultValue().equals(BigDecimal.valueOf(448.39)),
+                "Failure in calculation, wrong result");
 
     }
 

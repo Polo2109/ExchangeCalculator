@@ -15,7 +15,6 @@ angular.module('app', ['ngResource'])
         vm.exchangeRates = Exchange.getAll();
         vm.defaultRate = 'AUD';
         vm.exchangeValues = new ExchangeValues();
-        vm.exchangeValues.currency = vm.defaultRate;
 
         vm.calculate = () => {
             Exchange.calculate(vm.exchangeValues)
@@ -27,7 +26,6 @@ angular.module('app', ['ngResource'])
             vm.exchangeValues = new ExchangeValues();
             vm.result = true;
             vm.msg = false;
-            vm.exchangeValues.currency = vm.defaultRate;
         }
         const errorCallback = err => {
             vm.result = false;
